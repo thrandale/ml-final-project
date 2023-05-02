@@ -1,11 +1,26 @@
+# %% [markdown]
+# \pagebreak
+# \fontsize{16}{16}\selectfont
+#
+# Running the Model
+#
+# \fontsize{12}{12}\selectfont
+#
+# Uses tkinter to create a drawing app that predicts the number drawn.
+
+# %%
+# Import the necessary libraries
 import tkinter as tk
 from PIL import Image, ImageDraw
 import numpy as np
 from tensorflow.python.keras.models import load_model
 
-model_name = "mnist_model - 0.9407"
+# %%
+# Select the model to use
+model_name = "mnist_model - 0.9728"
 
 
+# %%
 class App:
     def __init__(self, master: tk.Tk) -> None:
         """A drawing app that predicts the number drawn.
@@ -16,10 +31,12 @@ class App:
         self.master = master
         master.title("Number Predictor")
 
+        # Create the widgets
         self.create_canvas()
         self.create_buttons()
         self.create_prediction_box()
 
+        # Load the model
         self.model = load_model(f"models/{model_name}.h5")
 
     def create_canvas(self) -> None:
@@ -98,7 +115,7 @@ class App:
         Returns:
             np.ndarray: The image as a numpy array.
         """
-        return np.asarray(img, dtype=np.uint8).reshape(1, 784)
+        return np.asarray(img, dtype=np.uint8).reshape(1, 28, 28, 1)
 
     def predict(self) -> None:
         """Predicts the number drawn on the canvas and displays it."""
@@ -108,6 +125,10 @@ class App:
         self.update_prediction_text(np.argmax(prediction), np.max(prediction))
 
 
+# %%
+# Run the app
 root = tk.Tk()
 app = App(root)
 root.mainloop()
+
+# %%
