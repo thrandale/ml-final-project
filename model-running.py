@@ -20,12 +20,7 @@ class App:
         self.create_buttons()
         self.create_prediction_box()
 
-    def init_model(self) -> None:
-        """Loads the model."""
-        # display a loading message
-        self.prediction_box["text"] = "Loading model..."
         self.model = load_model(f"models/{model_name}.h5")
-        self.prediction_box["text"] = "Prediction: None"
 
     def create_canvas(self) -> None:
         """Creates the canvas."""
