@@ -5,7 +5,7 @@
 This is my final project for the Machine Learning course at MSU Denver.
 
 This project is a neural network trained to classify handwritten digits.
-See the [project report](Crandall_Theo_ML_Final_Project.pdf) for more details.
+See the [project report](FinalProject_Crandall_Theo.pdf) for more details.
 
 ## Running the Project
 
